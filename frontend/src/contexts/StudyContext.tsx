@@ -37,6 +37,7 @@ interface StudyContextType {
 }
 
 const StudyContext = createContext<StudyContextType | undefined>(undefined);
+const BASE_URL = import.meta.env.VITE_BACKEND_URL;
 
 export const useStudy = () => {
   const context = useContext(StudyContext);
@@ -100,7 +101,7 @@ export const StudyProvider: React.FC<{ children: ReactNode }> = ({ children }) =
     const today = new Date().toISOString().split('T')[0];
 
     const fetchTodayScore = async () => {
-      const res = await fetch(`http://localhost:3001/api/scores/${today}`);
+      const res = await fetch(`${BASE_URL}/api/scores/${today}`);
       const data = await res.json();
       setTodayScore({
         date: today,
@@ -162,14 +163,14 @@ export const StudyProvider: React.FC<{ children: ReactNode }> = ({ children }) =
     const today = new Date().toISOString().split('T')[0];
     
     // Save to backend
-    await fetch("http://localhost:3001/api/log-session", {
+    await fetch("${BASE_URL}/api/log-session", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ user, seconds: time }),
     });
 
     // Refresh today's score from backend
-    const res = await fetch(`http://localhost:3001/api/scores/${today}`);
+    const res = await fetch(`${BASE_URL}/api/scores/${today}`);
     const data = await res.json();
     setTodayScore({
       date: today,
