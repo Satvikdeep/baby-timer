@@ -2,6 +2,7 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
 export type User = 'satvik' | 'dhanvi';
+const BASE_URL = import.meta.env.VITE_BACKEND_URL;
 
 interface StudySession {
   user: User;
@@ -37,7 +38,6 @@ interface StudyContextType {
 }
 
 const StudyContext = createContext<StudyContextType | undefined>(undefined);
-const BASE_URL = import.meta.env.VITE_BACKEND_URL;
 
 export const useStudy = () => {
   const context = useContext(StudyContext);
@@ -160,6 +160,7 @@ export const StudyProvider: React.FC<{ children: ReactNode }> = ({ children }) =
   };
 
   const addTimeToScore = async (user: User, time: number) => {
+    console.log("Sending time to backend", { user, time });
     const today = new Date().toISOString().split('T')[0];
     
     // Save to backend
