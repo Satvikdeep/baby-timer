@@ -4,6 +4,8 @@ import React, { createContext, useContext, useState, useEffect, ReactNode } from
 export type User = 'satvik' | 'dhanvi';
 const BASE_URL = import.meta.env.VITE_BACKEND_URL;
 
+console.log("Using backend URL:", BASE_URL);
+
 interface StudySession {
   user: User;
   startTime: number;
@@ -179,6 +181,8 @@ export const StudyProvider: React.FC<{ children: ReactNode }> = ({ children }) =
       dhanvi: data.dhanvi || 0,
     });
   };
+
+  
 
   const getFormattedTime = (seconds: number): string => {
     const hours = Math.floor(seconds / 3600);
