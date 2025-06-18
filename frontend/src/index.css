@@ -1,0 +1,111 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+/* Enhanced design system with deep blue/purple theme */
+
+@layer base {
+  :root {
+    --background: 8 12 28;
+    --foreground: 248 250 252;
+
+    --card: 15 20 40;
+    --card-foreground: 248 250 252;
+
+    --popover: 15 20 40;
+    --popover-foreground: 248 250 252;
+
+    --primary: 99 102 241;
+    --primary-foreground: 248 250 252;
+
+    --secondary: 25 30 50;
+    --secondary-foreground: 248 250 252;
+
+    --muted: 25 30 50;
+    --muted-foreground: 148 163 184;
+
+    --accent: 67 56 202;
+    --accent-foreground: 248 250 252;
+
+    --destructive: 239 68 68;
+    --destructive-foreground: 248 250 252;
+
+    --border: 25 30 50;
+    --input: 25 30 50;
+    --ring: 99 102 241;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 8 12 28;
+    --sidebar-foreground: 248 250 252;
+    --sidebar-primary: 99 102 241;
+    --sidebar-primary-foreground: 248 250 252;
+    --sidebar-accent: 15 20 40;
+    --sidebar-accent-foreground: 248 250 252;
+    --sidebar-border: 25 30 50;
+    --sidebar-ring: 99 102 241;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-gradient-main text-foreground font-sans antialiased;
+    min-height: 100vh;
+  }
+
+  .timer-display {
+    @apply font-mono text-8xl md:text-9xl font-bold tracking-wider;
+    text-shadow: 0 0 30px rgba(99, 102, 241, 0.4);
+  }
+
+  .glass-card {
+    @apply backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl shadow-2xl;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.05);
+  }
+
+  .gradient-text-satvik {
+    @apply bg-gradient-to-r from-indigo-400 to-blue-500 bg-clip-text text-transparent;
+  }
+
+  .gradient-text-dhanvi {
+    @apply bg-gradient-to-r from-pink-400 to-purple-500 bg-clip-text text-transparent;
+  }
+
+  .pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% {
+      opacity: 1;
+      transform: scale(1);
+      filter: brightness(1);
+    }
+    50% {
+      opacity: 0.9;
+      transform: scale(1.02);
+      filter: brightness(1.1);
+    }
+  }
+}
+
+@layer utilities {
+  .bg-gradient-main {
+    background-image: linear-gradient(to bottom right, rgb(var(--card)), rgb(var(--accent)));
+  }
+
+  .bg-gradient-satvik {
+    background: #6366f1 linear-gradient(to right, #453bcc, #885df6); /* indigo to blue */
+  }
+
+  .bg-gradient-dhanvi {
+    background: linear-gradient(to left, #f16eb4, #c11b61); /* pink to purple */
+  }
+}
