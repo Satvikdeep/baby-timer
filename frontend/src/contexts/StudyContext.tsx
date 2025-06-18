@@ -162,11 +162,11 @@ export const StudyProvider: React.FC<{ children: ReactNode }> = ({ children }) =
   };
 
   const addTimeToScore = async (user: User, time: number) => {
-    console.log("Sending time to backend", { user, time });
+    
     const today = new Date().toISOString().split('T')[0];
     
     // Save to backend
-    await fetch("${BASE_URL}/api/log-session", {
+    await fetch(`${BASE_URL}/api/log-session`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ user, seconds: time }),

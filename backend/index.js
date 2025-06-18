@@ -10,7 +10,6 @@ app.use(express.json());
 // POST: log focus time
 app.post("/api/log-session", async (req, res) => {
 
-  console.log("sigma sigma boi");
   const { user, seconds } = req.body;
   const today = new Date().toISOString().split("T")[0];
 
