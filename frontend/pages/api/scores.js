@@ -1,6 +1,4 @@
-// frontend/pages/api/scores.js
 import { db } from "../../lib/firebase-admin";
-
 
 export default async function handler(req, res) {
   const date = req.query.date;
@@ -8,10 +6,10 @@ export default async function handler(req, res) {
   if (!date) return res.status(400).json({ error: "Missing date param" });
 
   try {
-    const docRef = doc(db, "sessions", date);
-    const docSnap = await getDoc(docRef);
+    const docRef = db.collection("sessions").doc(date); // ✅ admin SDK style
+    const docSnap = await docRef.get();
 
-    if (docSnap.exists()) {
+    if (docSnap.exists) {
       res.status(200).json(docSnap.data());
     } else {
       res.status(200).json({ satvik: 0, dhanvi: 0 });
