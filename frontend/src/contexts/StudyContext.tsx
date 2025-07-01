@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
 export type User = 'satvik' | 'dhanvi';
@@ -103,7 +102,7 @@ export const StudyProvider: React.FC<{ children: ReactNode }> = ({ children }) =
     const today = new Date().toISOString().split('T')[0];
 
     const fetchTodayScore = async () => {
-      const res = await fetch(`${BASE_URL}/api/scores/${today}`);
+      const res = await fetch(`/api/scores/${today}`);
       const data = await res.json();
       setTodayScore({
         date: today,
@@ -166,14 +165,14 @@ export const StudyProvider: React.FC<{ children: ReactNode }> = ({ children }) =
     const today = new Date().toISOString().split('T')[0];
     
     // Save to backend
-    await fetch(`${BASE_URL}/api/log-session`, {
+    await fetch(`/api/log-session`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ user, seconds: time }),
     });
 
     // Refresh today's score from backend
-    const res = await fetch(`${BASE_URL}/api/scores/${today}`);
+    const res = await fetch(`/api/scores/${today}`);
     const data = await res.json();
     setTodayScore({
       date: today,
@@ -181,6 +180,18 @@ export const StudyProvider: React.FC<{ children: ReactNode }> = ({ children }) =
       dhanvi: data.dhanvi || 0,
     });
   };
+
+  const loadprogress = async() => {
+
+    const today = new Date().toISOString().split('T')[0];
+    const res = await fetch(`/api/scores/${today}`);
+    const data = await res.json();
+    setTodayScore({
+      date: today,
+      satvik: data.satvik || 0,
+      dhanvi: data.dhanvi || 0,
+    });
+  }
 
   
 
