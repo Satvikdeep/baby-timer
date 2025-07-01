@@ -1,9 +1,4 @@
 {
-  "functions": {
-    "api/**/*.js": {
-      "runtime": "nodejs18.x"
-    }
-  },
   "builds": [
     { "src": "api/**/*.js", "use": "@vercel/node" },
     { "src": "frontend/package.json", "use": "@vercel/static-build", "config": { "distDir": "frontend/dist" } }
