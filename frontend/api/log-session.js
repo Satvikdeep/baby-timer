@@ -1,5 +1,5 @@
 // frontend/pages/api/log-session.js
-import { db } from "../lib/firebase-admin"; // ✅ Correct: use admin SDK
+import { db } from "./firebase-admin"; // ✅ Correct: use admin SDK
 
 export default async function handler(req, res) {
   if (req.method !== "POST") return res.status(405).end();

@@ -1,4 +1,4 @@
-import { db } from "../lib/firebase-admin";
+import { db } from "./firebase-admin";
 
 export default async function handler(req, res) {
   const date = req.query.date;
