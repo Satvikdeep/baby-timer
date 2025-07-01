@@ -1,6 +1,6 @@
 // frontend/pages/api/scores.js
-import { db } from "../../lib/firebase";
-import { doc, getDoc } from "firebase/firestore";
+import { db } from "../../lib/firebase-admin";
+
 
 export default async function handler(req, res) {
   const date = req.query.date;

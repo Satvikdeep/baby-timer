@@ -1,6 +1,6 @@
 // frontend/pages/api/log-session.js
-import { db } from "../../lib/firebase";
-import { doc, getDoc, setDoc } from "firebase/firestore";
+import { db } from "../../lib/firebase-admin";
+
 
 export default async function handler(req, res) {
   if (req.method !== "POST") return res.status(405).end();
